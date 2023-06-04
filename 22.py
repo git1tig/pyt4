@@ -9,25 +9,30 @@ def fillList(arrlength, arrname):
         myList.append(int(input(f'Введите элемент {i+1} {arrname} набора ')))
     return myList
 
+
 a = int(input('Введите размер первого набора:'))
 list1 = fillList(a, 'первого')
 
 b = int(input('Введите размер второго набора:'))
 list2 = fillList(b, 'второго')
-list3 =[]
-print (list1)
-print (list2)
+list3 = []
+unic = False
+print(list1)
+print(list2)
 
-for i in range (a):
-    for j in range (b):
+
+for i in range(a):
+    for j in range(b):
         if list1[i] == list2[j]:
-            list3.append(list1[i])
+            if len(list3) == 0:
+                list3.append(list1[i])
+            else:
+                unic = False
+                for k in range(len(list3)):
+                    if list3[k] != list1[i]:
+                        unic = True
+                if unic:
+                    list3.append(list1[i])
+
 list3.sort()
-print (list3)
-
-
-
-
-
-
-
+print(list3)
